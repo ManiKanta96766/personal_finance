@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Set Budget</h2>
+    <form method="post" class="mb-4">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="category" class="form-label">Category*</label>
+        <input type="text" name="category" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="limit" class="form-label">Amount*</label>
+        <input type="number" name="limit" class="form-control" step="0.01" required>
+      </div>
+      <div class="mb-3">
+        <label for="month" class="form-label">Month*</label>
+        <input type="number" name="month" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="year" class="form-label">Year*</label>
+        <input type="number" name="year" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Set</button>
+    </form>
+
+    <h3>Your Budgets</h3>
+    <ul class="list-group">
+      {% for budget in budgets %}
+        <li class="list-group-item">
+          {{ budget.category }} — Limit: ₹{{ budget.amount|floatformat:2 }} for {{ budget.month }}/{{ budget.year }}
+        </li>
+      {% empty %}
+        <li class="list-group-item">No budgets set yet.</li>
+      {% endfor %}
+    </ul>
+  
+    <a href="{% url 'dashboard' %}" class="btn btn-link mt-3">← Back to Dashboard</a>
+</div>
+{% endblock %}

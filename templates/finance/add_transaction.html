@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+  <h2>Add Transaction</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit">Save</button>
+  </form>
+  <p><a href="{% url 'dashboard' %}">⬅ Back to Dashboard</a></p>
+
+  {% endblock %}
