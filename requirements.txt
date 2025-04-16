@@ -1,0 +1,19 @@
+# Core dependencies
+Django>=4.2
+djangorestframework>=3.14.0
+psycopg2-binary>=2.9.9
+
+# OAuth (Google Sign-In)
+social-auth-app-django>=5.4.0
+
+# Email service (SendGrid)
+sendgrid>=6.10.0
+
+# Deployment
+gunicorn>=21.2.0
+whitenoise>=6.6.0
+python-decouple>=3.8
+
+# Optional but helpful
+django-environ>=0.11.2  # if using environment variables
+Pillow>=10.2.0          # for image uploads (if needed for receipts)
